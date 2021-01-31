@@ -31,13 +31,13 @@ class ListPage extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    '(' + memo.ticker.toUpperCase() + ')',
+                                    '(${memo.code})',
                                   ),
                                   SizedBox(
                                     width: 8,
                                   ),
                                   Text(
-                                    memo.market.toUpperCase(),
+                                    memo.market,
                                   ),
                                 ],
                               ),

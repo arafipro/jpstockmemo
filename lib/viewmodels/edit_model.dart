@@ -9,7 +9,7 @@ class EditModel extends ChangeNotifier {
   String get dropdownValue => _dropdownValue;
 
   String stockName = '';
-  String stockTicker = '';
+  String stockCode = '';
   String stockMarket = '';
   String stockMemo = '';
   // datetime型をDateFormatで日時のフォーマットを整える
@@ -38,7 +38,7 @@ class EditModel extends ChangeNotifier {
   Future addMemo() async {
     StockMemo newMemo = StockMemo(
       stockName,
-      stockTicker,
+      stockCode,
       // stockMarketはdropdownmenuの選択された値を代入
       stockMarket = _dropdownValue,
       stockMemo,
@@ -54,9 +54,9 @@ class EditModel extends ChangeNotifier {
     if (stockName.isEmpty) {
       stockName = memo.name;
     }
-    // stockTickerが変更されない場合は元の値を代入
-    if (stockTicker.isEmpty) {
-      stockTicker = memo.ticker;
+    // stockCodeが変更されない場合は元の値を代入
+    if (stockCode.isEmpty) {
+      stockCode = memo.code;
     }
     // stockMarketが変更されない場合は元の値を代入
     if (stockMarket.isEmpty) {
@@ -70,7 +70,7 @@ class EditModel extends ChangeNotifier {
     StockMemo changeMemo = StockMemo.withId(
       memo.id,
       stockName,
-      stockTicker,
+      stockCode,
       stockMarket,
       stockMemo,
       // 新規登録以降は登録日時を変更することはないので元の価を代入

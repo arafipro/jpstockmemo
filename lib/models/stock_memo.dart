@@ -2,7 +2,7 @@
 class StockMemo {
   int id;
   String name; // 銘柄名
-  String ticker; // ティッカー
+  String code; // 証券コード
   String market; // 市場
   String memo; // メモ
   String createdAt; // 登録日時
@@ -10,7 +10,7 @@ class StockMemo {
 
   StockMemo(
     this.name,
-    this.ticker,
+    this.code,
     this.market,
     this.memo,
     this.createdAt,
@@ -19,7 +19,7 @@ class StockMemo {
   StockMemo.withId(
     this.id,
     this.name,
-    this.ticker,
+    this.code,
     this.market,
     this.memo,
     this.createdAt,
@@ -32,7 +32,7 @@ class StockMemo {
       map['id'] = id;
     }
     map['name'] = name;
-    map['ticker'] = ticker;
+    map['code'] = code;
     map['market'] = market;
     map['memo'] = memo;
     map['createdAt'] = createdAt;
@@ -44,7 +44,7 @@ class StockMemo {
   StockMemo.fromMapObject(Map<String, dynamic> map) {
     this.id = map['id'];
     this.name = map['name'];
-    this.ticker = map['ticker'];
+    this.code = map['code'];
     this.market = map['market'];
     this.memo = map['memo'];
     this.createdAt = map['createdAt'];

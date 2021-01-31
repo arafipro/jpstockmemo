@@ -11,7 +11,7 @@ class DatabaseHelper {
   String memoTable = 'memo_table';    // テーブル名
   String colId = 'id';                // KEY
   String colName = 'name';            // 銘柄名
-  String colTicker = 'ticker';        // ティッカー
+  String colCode = 'code';            // 証券コード
   String colmarket = 'market';        // 市場
   String colMemo = 'memo';            // メモ
   String colCreatedAt = 'createdAt';  // 登録日時
@@ -42,7 +42,7 @@ class DatabaseHelper {
 
     // Open/create the database at a given path
     var memosDatabase = await openDatabase(path,
-        version: 3, onCreate: _createDb, onUpgrade: _upgradeDb);
+        version: 1, onCreate: _createDb);
     return memosDatabase;
   }
 
@@ -50,23 +50,23 @@ class DatabaseHelper {
     // sql文は大文字ではなく小文字で記述しないとエラーになるよう（なぜかはわからない）
     await db.execute(
         """CREATE TABLE $memoTable($colId INTEGER PRIMARY KEY AUTOINCREMENT, $colName TEXT,
-          $colTicker TEXT, $colmarket TEXT, $colMemo TEXT, $colCreatedAt TIMESTAMP, $colUpdatedAt TIMESTAMP)""");
+          $colCode TEXT, $colmarket TEXT, $colMemo TEXT, $colCreatedAt TIMESTAMP, $colUpdatedAt TIMESTAMP)""");
         // """CREATE TABLE $memoTable($colId INTEGER PRIMARY KEY AUTOINCREMENT, $colName TEXT,
-        //   $colTicker TEXT, $colmarket TEXT, $colMemo TEXT)""");
+        //   $colCode TEXT, $colmarket TEXT, $colMemo TEXT)""");
   }
 
-  void _upgradeDb(Database db, int oldVersion, int newVersion) async {
-    var scripts = {
-      '2': ['ALTER TABLE $memoTable ADD COLUMN $colCreatedAt TIMESTAMP;'],
-      '3': ['ALTER TABLE $memoTable ADD COLUMN $colUpdatedAt TIMESTAMP;'],
-    };
-    for (var i = oldVersion + 1; i <= newVersion; i++) {
-      var queries = scripts[i.toString()];
-      for (String query in queries) {
-        await db.execute(query);
-      }
-    }
-  }
+  // void _upgradeDb(Database db, int oldVersion, int newVersion) async {
+  //   var scripts = {
+  //     '2': ['ALTER TABLE $memoTable ADD COLUMN $colCreatedAt TIMESTAMP;'],
+  //     '3': ['ALTER TABLE $memoTable ADD COLUMN $colUpdatedAt TIMESTAMP;'],
+  //   };
+  //   for (var i = oldVersion + 1; i <= newVersion; i++) {
+  //     var queries = scripts[i.toString()];
+  //     for (String query in queries) {
+  //       await db.execute(query);
+  //     }
+  //   }
+  // }
 
   // Fetch Operation: Get all Memo objects from database
   Future<List<Map<String, dynamic>>> getMemoMapList() async {

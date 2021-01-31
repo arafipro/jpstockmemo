@@ -17,12 +17,12 @@ class EditPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool isUpdate = stockmemo != null;
     final nameController = TextEditingController();
-    final tickerController = TextEditingController();
+    final codeController = TextEditingController();
     final memoController = TextEditingController();
 
     if (isUpdate) {
       nameController.text = stockmemo.name;
-      tickerController.text = stockmemo.ticker;
+      codeController.text = stockmemo.code;
       memoController.text = stockmemo.memo;
     }
 
@@ -55,16 +55,18 @@ class EditPage extends StatelessWidget {
                     },
                   ),
                   TF(
-                    controller: tickerController,
-                    labelText: 'ティッカー',
+                    controller: codeController,
+                    labelText: '証券コード',
                     maxLines: 1,
-                    maxLength: 5,
+                    maxLength: 4,
                     onChanged: (text) {
-                      model.stockTicker = text;
+                      model.stockCode = text;
                     },
                     validator: (value) {
                       if (value.isEmpty) {
-                        return 'ティッカーを入力してください';
+                        return '証券コードを入力してください';
+                      } else if (!RegExp(r"\d{4}").hasMatch(value)){
+                        return '４桁の半角数字を入力してください';
                       }
                     },
                   ),
