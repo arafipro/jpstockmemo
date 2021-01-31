@@ -28,7 +28,8 @@ class MyApp extends StatelessWidget {
       ],
       home: Scaffold(
         appBar: AppBar(
-          title: Text('米国株投資メモ'),
+          backgroundColor: Colors.red,
+          title: Text('日本株投資メモ'),
         ),
         body: Column(
           children: [
