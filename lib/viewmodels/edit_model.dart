@@ -4,8 +4,8 @@ import 'package:jpstockmemo/utils/dbhelper.dart';
 import 'package:intl/intl.dart';
 
 class EditModel extends ChangeNotifier {
-  List<String> markets = ["NYSE", "NASDAQ"];
-  String _dropdownValue = "NYSE";
+  List<String> markets = ["東証１部", "東証２部", "JASDAQ", "マザーズ", "その他"];
+  String _dropdownValue = "東証１部";
   String get dropdownValue => _dropdownValue;
 
   String stockName = '';
