@@ -1,16 +1,24 @@
-# jpstockmemo
+# 日本株投資メモ(jpstockmemo)
 
-A new Flutter project.
+### 基本機能
 
-## Getting Started
+- 銘柄名
+- 証券コード
+- 市場(東証１部,東証２部,JASDAQ,マザーズ,その他)
+- メモ
 
-This project is a starting point for a Flutter application.
+上記４項目を新規保存、編集、削除ができます。
 
-A few resources to get you started if this is your first Flutter project:
+---
+### 今後の機能追加・変更予定
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- 一覧表示の順序をソートできるようにする。
+- 検索できるようにする。
+- ボトムナビゲーションバー(BottomNavigationBar)を追加する。<br>(ページが変更される際の読込データ量をproviderを使用して最小限にするため。)
+---
+### アプリ更新履歴
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+|バージョン|更新日|概要|
+|:-:|:-:|:-:|
+|v1.2.1|2021.01.31|リリース(米国株投資メモを改良)|
+|v1.2.2|2021.02.07|強制終了されるのを修正|
